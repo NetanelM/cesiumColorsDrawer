@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_picker_private</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.54">
+        <g id="icon_picker_private" fill="#000000">
+            <path d="M7.91111111,0 C10.1244444,0 11.9111111,1.78666667 11.9111111,4 C11.9111111,6.21333333 10.1244444,8 7.91111111,8 C5.69777778,8 3.91111111,6.21333333 3.91111111,4 C3.91111111,1.78666667 5.69777778,0 7.91111111,0 L7.91111111,0 Z" id="Path"></path>
+            <path d="M16,15.9555556 L0,15.9555556 L0,14.0888889 C0,11.4222222 5.33333333,9.95555556 8,9.95555556 C10.6666667,9.95555556 16,11.4222222 16,14.0888889 L16,15.9555556 L16,15.9555556 Z" id="Path"></path>
+        </g>
+    </g>
+</svg>

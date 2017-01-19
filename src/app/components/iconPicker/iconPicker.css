@@ -1,0 +1,144 @@
+icon-picker {
+    direction: rtl;
+}
+
+icon-picker .title{
+    color: black;
+    /*padding-top: 10px;*/
+}
+icon-picker .title span{
+    margin-top: 10px;
+    display: inline-block;
+}
+
+icon-picker .title .md-button.close{
+    padding: 5px;
+    margin: 5px;
+    float: left;
+    min-height: 0px;
+    line-height: 0px;
+    min-width: 0px;
+}
+icon-picker .md-button {
+    min-width: 40px;
+}
+
+/* tabs */
+icon-picker md-tabs {
+    height: 332px;
+    overflow: visible;
+}
+icon-picker md-tab-item {
+    background-color: #ECECEC;
+}
+
+icon-picker md-tab-content {
+    padding: 8px;
+    overflow: hidden;
+    border-bottom: 1px solid #B0B0B0;
+}
+icon-picker md-tabs-wrapper {
+
+}
+icon-picker md-tabs md-ink-bar {
+    color: #FFDA56;
+    background-color: #FFDA56;
+    height: 4px;
+}
+icon-picker md-tabs md-tab-item md-icon {
+    height: 25px;
+    width: 25px;
+}
+/* container */
+icon-picker .icon-picker-container.hide {
+    display: none;
+}
+icon-picker .icon-picker-container {
+    width: 270px;
+    background-color: #FFF;
+    position: fixed;
+    z-index: 2;
+    border: 1px solid black;
+    border-radius: 2px;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.22),0px 8px 8px 0px rgba(0,0,0,0.30);
+    text-align: center;
+}
+
+/* search */
+icon-picker .icon-picker-container .search-component {
+    position: relative;
+}
+icon-picker .icon-picker-container .search-component md-icon{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height: 28px;
+    width: 28px;
+}
+icon-picker .icon-picker-container .search-component input {
+    margin: 0px 0px 10px;
+    padding: 5px;
+    line-height: 25px;
+    height: 25px;
+    /*width: 262px;*/
+    border-radius: 2px;
+    /*border: none;*/
+    border: 1px solid #B0B0B0;
+    width: 95%;
+}
+
+/* icons */
+icon-picker .icon-area-wrapper {
+    position: relative;
+    text-align: center;
+    padding: 0 10px;
+    border: 1px solid #B0B0B0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 312px;
+}
+icon-picker .icon-area-wrapper.with-search{
+    height: 260px;
+    max-height: 260px;
+}
+icon-picker .icons-area  {
+    position: absolute;
+    overflow: visible;
+}
+icon-picker .icons-area .item {
+    float: right;
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ABABAB;
+    margin: 6px 0 6px 8px;
+}
+icon-picker .icons-area .item:nth-child(5n){
+    margin-left: 0;
+}
+icon-picker .icons-area .item md-icon {
+    height: 28px;
+    width: 28px;
+    position: relative;
+    top: -2px;
+    fill: black;
+}
+
+icon-picker md-actions {
+    text-align: center;
+    color: black;
+}
+/* scroll style */
+icon-picker ::-webkit-scrollbar {
+    width: 8px;
+}
+
+icon-picker ::-webkit-scrollbar-track {
+    background: #ABABAB;
+}
+
+icon-picker ::-webkit-scrollbar-thumb {
+    background: #636363;
+}
+

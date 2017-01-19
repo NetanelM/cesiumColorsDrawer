@@ -1,0 +1,8 @@
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 80 100" style="" x="0px" y="0px" fill-rule="evenodd"
+     stroke-width="0.50099999" stroke-linejoin="bevel" overflow="visible">
+  <path
+    d="M 95,5 C 84.185,6.6875 72.845,13.9475 65,23.75 L 76.25,35 C 85.025,28.085 92.9,17.1275 95,5 z M 63.125,25.625 21.6875,68.5625 31.25,78.125 74.375,36.875 63.125,25.625 z M 21.875,48.125 5,65 21.875,65 38.75,48.125 l -16.875,0 z m 30,13.125 L 35,78.125 35,95 51.875,78.125 l 0,-16.875 z"
+    transform="scale(0.8,0.8)" style="" stroke="none" marker-start="none" marker-end="none"/>
+</svg>

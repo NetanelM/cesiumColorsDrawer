@@ -1,0 +1,45 @@
+<div class="" ng-if="!iconPickerCtrl.visible" ng-click="iconPickerCtrl.openPicker()">open Icon</div>
+<div class="icon-picker-container" ng-if="iconPickerCtrl.visible">
+    <div class="title">
+        <md-button class="close" aria-label="close" ng-click="iconPickerCtrl.closePicker()" title="סגור">
+            <md-icon md-svg-src="{{iconPickerCtrl.iconsPath}}close.svg"></md-icon>
+        </md-button>
+        <span ng-if="iconPickerCtrl.type !='number'">{{iconPickerCtrl.title}}</span>
+    </div>
+    <md-tabs md-center-tabs="true" md-stretch-tabs="always" md-align-tabs="bottom">
+        <md-tab>
+            <md-tab-label>
+                <md-icon md-svg-src="{{iconPickerCtrl.iconsPath}}icon_picker_general.svg" title="אייקון"/>
+            </md-tab-label>
+            <md-tab-body>
+                <div class="search-component">
+                    <input ng-model="iconPickerCtrl.searchInput" aria-label="search"  placeholder="חיפוש" >
+                    <md-icon md-svg-src="{{iconPickerCtrl.iconsPath}}icon_picker_search.svg" title="אייקון"/>
+                </div>
+                <div class="icon-area-wrapper with-search">
+                    <div class="icons-area clearfix">
+                        <md-button class="item" ng-repeat="icon in iconPickerCtrl.icons| filter:iconPickerCtrl.searchInput track by $index"
+                                   aria-label="set icon"   ng-click="iconPickerCtrl.setIcon(icon, true)" title="{{iconPickerCtrl.getTitle(icon)}}">
+                            <md-icon md-svg-src="{{icon}}"></md-icon>
+                        </md-button>
+                    </div>
+                </div>
+            </md-tab-body>
+        </md-tab>
+        <md-tab>
+            <md-tab-label>
+                <md-icon md-svg-src="{{iconPickerCtrl.iconsPath}}icon_picker_history.svg" title="היסטוריה"/>
+            </md-tab-label>
+            <md-tab-body>
+                <div class="icon-area-wrapper">
+                    <div class="icons-area">
+                        <md-button class="item" ng-repeat="icon in iconPickerCtrl.history"
+                                   aria-label="set icon"   ng-click="iconPickerCtrl.setIcon(icon)" title="{{iconPickerCtrl.getTitle(icon)}}">
+                            <md-icon md-svg-src="{{icon}}"></md-icon>
+                        </md-button>
+                    </div>
+                </div>
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</div>

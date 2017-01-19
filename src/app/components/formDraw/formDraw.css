@@ -1,0 +1,202 @@
+.open-form{
+  position: absolute;
+  z-index: 1;
+  background-color: #ffffff;
+  color: #181818;
+  height: 30px;
+  width: 50px;
+  box-shadow: #181818 0 0 3px 0;
+  border-radius: 2px;
+  text-align: center;
+}
+.form-scope {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  background-color: #FFFFFF;
+  box-shadow: #00262C 0 2px 0 0;
+  width: 400px;
+  height: 300px;
+}
+
+md-select-menu md-content {
+  max-height: 300px;
+}
+
+md-select-menu {
+  max-height: 300px;
+}
+
+.text-scope {
+  width: 350px;
+  height: 14px;
+  position: relative;
+  right: 14px;
+}
+
+.low {
+  float: left;
+  position: relative;
+  left: 0;
+}
+
+.high {
+  float: right;
+}
+
+form-draw .fix-gradient-d3 {
+  display: flex;
+  direction: rtl;
+  margin: 0 0 8px 18px;
+}
+
+form-draw .fix-gradient {
+  direction: ltr;
+}
+
+form-draw .inline-header {
+  margin: 0;
+  display: inline-block;
+  width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+form-draw .colorEditorSVG svg {
+  display: block;
+  cursor: pointer;
+}
+
+/* color gradient selector */
+form-draw .color-gradient-selector {
+  width: 358px;
+  background-color: #424242;
+  padding: 0;
+}
+
+form-draw .color-gradient-selector .md-select-value {
+  background-color: #424242;
+  outline: none;
+  border-bottom: none;
+}
+
+form-draw .color-gradient-selector .md-select-value > span:first-child {
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.50);
+}
+
+form-draw .color-gradient-selector .md-select-value > span:first-child > div {
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.50);
+}
+
+/* color control */
+.color-control {
+  /* using display for creating new block format context*/
+  overflow: hidden;
+  width: 100%;
+}
+
+form-draw .md-select-value *:first-child {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  /*direction: ltr;*/
+}
+
+form-draw .color-control > div {
+  width: calc(50% - 1px);
+  float: right;
+  line-height: 28px;
+}
+
+form-draw .color-control > div:nth-child(odd) {
+  border-left: 1px solid #979797;
+}
+
+form-draw .color-control > div > * {
+  margin: 2px;
+}
+
+form-draw .color-control > div button.checkbox-button.color-checkbox {
+  padding: 8px 0 8px 4px;
+  float: right;
+}
+
+form-draw .color-control > div:nth-child(even) button.checkbox-button.color-checkbox {
+  padding-right: 4px;
+}
+
+/* color picker */
+form-draw div[md-color-picker] {
+  float: left;
+}
+
+form-draw .md-color-picker-input-container md-input-container,
+form-draw .md-color-picker-input-container button.md-color-picker-clear {
+  display: none;
+}
+
+form-draw div[md-color-picker] .md-color-picker-input-container .md-color-picker-preview {
+  height: 16px;
+  width: 38px;
+  top: 7px;
+  margin-left: 6px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0;
+  border: 1px solid #979797;
+  box-shadow: none;
+}
+
+/* color picker dialog */
+.md-color-picker-dialog {
+  /* prevent closing on out-click */
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  top: 0;
+  padding-top: 10%;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.md-color-picker-dialog [md-color-picker-container], .md-color-picker-dialog md-actions {
+  margin: 0 auto;
+  width: 372px;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.22), 0px 8px 8px 0px rgba(0, 0, 0, 0.30);
+}
+
+.md-color-picker-dialog [md-color-picker-container] .md-color-picker-container {
+  height: 314px;
+  width: 372px;
+}
+
+.md-color-picker-dialog .md-color-picker-preview md-tabs-wrapper {
+  visibility: hidden;
+}
+
+.md-color-picker-dialog md-tabs-content-wrapper md-tab-content {
+  overflow: hidden;
+}
+
+.md-color-picker-dialog .md-color-picker-result {
+  min-height: 10px;
+}
+
+.md-color-picker-dialog md-tabs md-ink-bar {
+  color: #FFDA56;
+  background-color: #FFDA56;
+}
+
+.md-color-picker-dialog md-tabs .md-tab md-icon {
+  height: 20px;
+  width: 20px;
+}
+
+.md-color-picker-dialog md-tabs .md-tab.md-active md-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.md-color-picker-dialog md-actions {
+  background-color: #fff;
+}

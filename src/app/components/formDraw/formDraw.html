@@ -1,0 +1,28 @@
+<div class="open-form" ng-if="formDrawCtrl.visible" ng-click="formDrawCtrl.openForm()">form</div>
+<div class="form-scope" ng-if="!formDrawCtrl.visible">
+  <md-input-container class="">
+    <md-select ng-model="vm.gradientColor">
+      <md-option ng-value="shape.name" ng-repeat="shape in formDrawCtrl.optionsShape">
+        <div ng-click="formDrawCtrl.setShape(shape.method)">{{shape.name}}</div>
+      </md-option>
+    </md-select>
+  </md-input-container>
+
+  <div>
+    <label>Icon:</label>
+    <icon-picker></icon-picker>
+  </div>
+
+  <div>
+    <label>Color:</label>
+    <div md-color-picker ng-model="formDrawCtrl.selectColor"
+         type="1"
+         md-color-sliders="false"
+         md-color-material-palette="false"
+         md-color-alpha-channel="false"
+         md-color-default-tab="1">
+    </div>
+
+  </div>
+
+</div>
