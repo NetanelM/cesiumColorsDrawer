@@ -14,7 +14,7 @@ describe('directive formDraw', function () {
   }));
   describe('constructor', function () {
     it('should be compiled', () => {
-      expect(element.html()).not.toEqual(1);
+      expect(element.html()).toEqual(1);
     });
   });
 
