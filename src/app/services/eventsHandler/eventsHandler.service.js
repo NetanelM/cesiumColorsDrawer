@@ -3,14 +3,20 @@ export class EventsHandlerService {
     'ngInject';
   }
 
-  enableDraw(viewer) {
-    this.classDraw = new EntityDraw(viewer);
+  enableDrawPoint(viewer) {
+    this.classDrawPoint = new drawPoint(viewer);
 
-    return this.classDraw.setDraw();
+    return this.classDrawPoint.setDraw();
+  }
+
+  enableDrawPolygon(viewer,shape,position) {
+    this.classDrawPolygon = new polygonDraw(viewer);
+
+    return this.classDrawPolygon.setDraw(undefined,undefined,shape,position);
   }
 }
 
-class EntityPoint {
+class drawPoint {
   constructor(viewer) {
     this._viewer = viewer;
     this.entityDraw = false;
@@ -39,10 +45,13 @@ class EntityPoint {
     };
     return this;
   }
-  initDrawPoint(){
+
+  initDrawPoint() {
     this._setupEvents();
     this.drawingEntitiy = this.viewer.entities.getOrCreateEntity('drawingEntity');
-    //this.drawingEntitiy
+
+    //this.drawingEntitiy.show = true;
+
   }
 
   mouseLeft(click) {
@@ -50,10 +59,12 @@ class EntityPoint {
     if (_.isUndefined(position)) {
       return;
     }
+
+    this.drawingEntitiy.position = position
   }
 }
 
-class EntityDraw {
+class polygonDraw {
   constructor(viewer) {
     this._viewer = viewer;
     this.entityDraw = false;
@@ -68,7 +79,7 @@ class EntityDraw {
     this._eventHandler = eventHandler;
   }
 
-  initDrawPolyline() {
+  initDraw(shape,position) {
     this._setupEvents();
     this.drawingEntitiy = this.viewer.entities.getOrCreateEntity('drawingEntity');
     this.polygonPositions = [];
@@ -77,10 +88,10 @@ class EntityDraw {
     }, false);
 
     this.drawingEntitiy.show = true;
-    this.drawingEntitiy.polyline = {
-      positions: positionCBP
+    this.drawingEntitiy[shape] = {
+      [position]: positionCBP
     };
-    this.drawingEntitiy.polyline.material = Cesium.Color.BLUE;
+    //this.drawingEntitiy[shape].material = Cesium.Color.BLUE;
   }
 
   _setupEvents() {
@@ -141,8 +152,8 @@ class EntityDraw {
     viewer.scene.screenSpaceCameraController.enableTranslate = state;
   }
 
-  setDraw(_onDrawEnd, _onDrawUpdate) {
-    this.initDrawPolyline();
+  setDraw(_onDrawEnd, _onDrawUpdate,shape,position) {
+    this.initDraw(shape,position);
     this.onDrawEnd = _.isFunction(_onDrawEnd) ? _onDrawEnd : ()=> {
     };
     this.onDrawUpdate = _.isFunction(_onDrawUpdate) ? _onDrawUpdate : ()=> {
