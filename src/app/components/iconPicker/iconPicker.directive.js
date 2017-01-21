@@ -27,6 +27,8 @@ class IconPickerController {
     'ngInject';
     this.ICON_PICKER_WIDTH = 300;
     this.iconsPath = 'assets/images/icons/';
+    this.entity = this.config.viewer.entities.getOrCreateEntity('drawingEntity');
+    this.icon = '/assets/iconsSymbol/airplane.svg';
     this.metaData = metaData;
     this.visible = false
   }
@@ -62,10 +64,11 @@ class IconPickerController {
    * @param icon (string) selected icon
    */
   setIcon(icon, saveToHistory) {
-    //this.spec.iconsCollection[this.spec.iconKey] = icon;
     this.closePicker();
 
     if (saveToHistory) {
+      this.icon =icon;
+      this.entity.billboard.image = icon;
       this.metaData.saveIconsHistoryUnique(icon);
     }
   }
