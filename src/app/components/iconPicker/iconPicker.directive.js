@@ -40,7 +40,7 @@ class IconPickerController {
    * @description show icon Picker
    */
   openPicker() {
-    this.searchInput = '';
+    this.searchInput = ''; 
     this.history = this.metaData.getIconsHistory();
     this.icons = this.metaData.getIconsPack();
     this.visible = true;
