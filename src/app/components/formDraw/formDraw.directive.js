@@ -24,8 +24,9 @@ class FormDrawController {
 
     this.icon = '/assets/iconsSymbol/airplane.svg';
     this.iconConfig = {
-      viewer :this.config.viewer
+      viewer: this.config.viewer
     };
+    this.coordinates = '';
     this.visible = true;
     this.shapeName = '';
     this.initOptionsShape();
@@ -39,6 +40,32 @@ class FormDrawController {
     })
   }
 
+  setCoordinates() {
+
+    if (this.coordinates.replace(/[^\d,.]/g, '') === this.coordinates) {
+      let coordinates = this.coordinates.split(',');
+      if (coordinates.length == 2 && (this.shapeName === 'Point' || this.shapeName === 'Icon')) {
+        this.entity.position = Cesium.Cartesian3.fromDegrees(coordinates[0], coordinates[1])
+      }
+
+      if (coordinates.length > 3) {
+        let listCoordinat =[];
+        _.each(coordinates,function(c){
+          listCoordinat.push(Number(c));
+        });
+
+        if (this.shapeName === 'Polyline') {
+          this.entity.polyline.positions = Cesium.Cartesian3.fromDegreesArray(listCoordinat)
+        }
+        if (this.shapeName === 'Polygon') {
+          this.entity.polygon.hierarchy = Cesium.Cartesian3.fromDegreesArray(listCoordinat)
+        }
+      }
+
+    } else {
+      alert('Please do not put words')
+    }
+  }
 
   changeColor() {
     let that = this;

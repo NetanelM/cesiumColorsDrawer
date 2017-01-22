@@ -8,6 +8,12 @@
     </md-select>
   </md-input-container>
 
+<div ng-if="formDrawCtrl.shapeName !==''">
+  <label>Coordinates:</label>
+<button class="set-coordinates" ng-click="formDrawCtrl.setCoordinates()"></button>
+  <input class="coordinates" ng-model="formDrawCtrl.coordinates" type="text">
+</div>
+
   <div>
     <label>Icon:</label>
     <icon-picker config="formDrawCtrl.iconConfig"></icon-picker>
