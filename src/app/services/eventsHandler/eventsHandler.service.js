@@ -9,10 +9,10 @@ export class EventsHandlerService {
     return this.classDrawPoint.setDraw();
   }
 
-  enableDrawPolygon(viewer,shape,position) {
+  enableDrawPolygon(viewer,shape) {
     this.classDrawPolygon = new polygonDraw(viewer);
 
-    return this.classDrawPolygon.setDraw(undefined,undefined,shape,position);
+    return this.classDrawPolygon.setDraw(undefined,undefined,shape);
   }
 }
 
@@ -79,17 +79,17 @@ class polygonDraw {
     this._eventHandler = eventHandler;
   }
 
-  initDraw(shape,position) {
+  initDraw(shape) {
     this._setupEvents();
+    this.typeShape =shape;
     this.drawingEntitiy = this.viewer.entities.getOrCreateEntity('drawingEntity');
     this.polygonPositions = [];
     const positionCBP = new Cesium.CallbackProperty(()=> {
       return this.polygonPositions;
     }, false);
-
     this.drawingEntitiy.show = true;
-    this.drawingEntitiy[shape] = {
-      [position]: positionCBP
+    this.drawingEntitiy.polyline = {
+      positions: positionCBP
     };
     //this.drawingEntitiy[shape].material = Cesium.Color.BLUE;
   }
@@ -107,7 +107,10 @@ class polygonDraw {
   drawEnd() {
     this.viewer.trackedEntity = undefined;
     this.entityDraw = false;
-    this.polygonPositions.splice(this.polygonPositions.length - 2, 2, this.polygonPositions[0]);
+    if(this.typeShape === 'polygon'){
+      this.polygonPositions.splice(this.polygonPositions.length - 2, 2, this.polygonPositions[0]);
+    }
+
     const geoJson = this.convertToGeoJson(this.pointsToCartographicArray(this.polygonPositions));
     _.isFunction(this.onDrawEnd) ? this.onDrawEnd(geoJson) : '';
     this.disableCameraMotion(true, this.viewer);
@@ -152,8 +155,8 @@ class polygonDraw {
     viewer.scene.screenSpaceCameraController.enableTranslate = state;
   }
 
-  setDraw(_onDrawEnd, _onDrawUpdate,shape,position) {
-    this.initDraw(shape,position);
+  setDraw(_onDrawEnd, _onDrawUpdate,shape) {
+    this.initDraw(shape);
     this.onDrawEnd = _.isFunction(_onDrawEnd) ? _onDrawEnd : ()=> {
     };
     this.onDrawUpdate = _.isFunction(_onDrawUpdate) ? _onDrawUpdate : ()=> {

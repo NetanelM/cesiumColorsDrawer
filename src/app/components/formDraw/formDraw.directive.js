@@ -21,12 +21,14 @@ class FormDrawController {
     this.$scope = $scope;
     this.eventsHandler = eventsHandler;
     this.selectColor = '#303336';
-
+    this.selectColorFill = '#303336';
     this.icon = '/assets/iconsSymbol/airplane.svg';
     this.iconConfig = {
       viewer: this.config.viewer
     };
     this.coordinates = '';
+    // TODO : watch to entity position
+    this.coordinatesValue = '';
     this.visible = true;
     this.shapeName = '';
     this.initOptionsShape();
@@ -37,33 +39,41 @@ class FormDrawController {
     let that = this;
     this.$scope.$watch(()=>this.selectColor, function (nv, ov) {
       that.changeColor();
+    });
+    this.$scope.$watch(()=>this.selectColorFill, function (nv, ov) {
+      that.changeColorFill();
     })
   }
 
-  setCoordinates() {
-
-    if (this.coordinates.replace(/[^\d,.]/g, '') === this.coordinates) {
-      let coordinates = this.coordinates.split(',');
-      if (coordinates.length == 2 && (this.shapeName === 'Point' || this.shapeName === 'Icon')) {
-        this.entity.position = Cesium.Cartesian3.fromDegrees(coordinates[0], coordinates[1])
-      }
-
-      if (coordinates.length > 3) {
-        let listCoordinat =[];
-        _.each(coordinates,function(c){
-          listCoordinat.push(Number(c));
-        });
-
-        if (this.shapeName === 'Polyline') {
-          this.entity.polyline.positions = Cesium.Cartesian3.fromDegreesArray(listCoordinat)
+  setCoordinates(keyEvent) {
+    if (keyEvent.which === 13) {
+      if (this.coordinates.replace(/[^\d,.]/g, '') === this.coordinates) {
+        let coordinates = this.coordinates.split(',');
+        if (coordinates.length == 2 && (this.shapeName === 'Point' || this.shapeName === 'Icon')) {
+          this.entity.position = Cesium.Cartesian3.fromDegrees(coordinates[0], coordinates[1])
         }
-        if (this.shapeName === 'Polygon') {
-          this.entity.polygon.hierarchy = Cesium.Cartesian3.fromDegreesArray(listCoordinat)
-        }
-      }
 
-    } else {
-      alert('Please do not put words')
+        if (coordinates.length > 3) {
+          let listCoordinat = [];
+          _.each(coordinates, function (c) {
+            listCoordinat.push(Number(c));
+          });
+
+          if (this.shapeName === 'Polyline' || this.shapeName === 'Polygon') {
+            this.entity.polyline.positions = Cesium.Cartesian3.fromDegreesArray(listCoordinat)
+          }
+        }
+
+      } else {
+        alert('Please do not put words')
+      }
+    }
+  }
+
+  changeColorFill() {
+    if (this.shapeName === 'Polygon') {
+      this.entity.polygon.hierarchy = this.entity.polyline.positions;
+      this.entity.polygon.material = Cesium.Color.fromCssColorString(this.selectColorFill);
     }
   }
 
@@ -71,8 +81,6 @@ class FormDrawController {
     let that = this;
     switch (this.shapeName) {
       case 'Polygon':
-        that.entity.polygon.material = Cesium.Color.fromCssColorString(this.selectColor);
-        break;
       case 'Polyline':
         that.entity.polyline.material = Cesium.Color.fromCssColorString(this.selectColor);
         break;
@@ -155,7 +163,7 @@ class FormDrawController {
     this.entity.billboard.show = false;
     this.entity.position = null;
     this.entity.polyline.positions = null;
-    this.eventsHandler.enableDrawPolygon(this.config.viewer, 'polygon', 'hierarchy')
+    this.eventsHandler.enableDrawPolygon(this.config.viewer, 'polygon')
   }
 
   drawPolyline() {
@@ -163,7 +171,7 @@ class FormDrawController {
     this.entity.billboard.show = false;
     this.entity.position = null;
     this.entity.polygon.hierarchy = null;
-    this.eventsHandler.enableDrawPolygon(this.config.viewer, 'polyline', 'positions')
+    this.eventsHandler.enableDrawPolygon(this.config.viewer, 'polyline')
   }
 
   drawPoint() {
@@ -181,4 +189,23 @@ class FormDrawController {
     this.entity.polyline.positions = null;
     this.eventsHandler.enableDrawPoint(this.config.viewer)
   }
+
+  cancel() {
+    this.visible = true;
+  }
+
+  save() {
+    let object = {
+      entity: this.entity,
+      coordinates: this.coordinates,
+      type: this.shapeName,
+      color: this.selectColor
+    };
+
+    object.fill = this.shapeName === 'Polygon' ? this.selectColorFill : undefined;
+
+    this.config.onSubmit(object);
+    this.visible = true;
+  }
+
 }

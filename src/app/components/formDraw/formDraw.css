@@ -1,4 +1,4 @@
-.open-form{
+.open-form {
   position: absolute;
   z-index: 1;
   background-color: #ffffff;
@@ -9,6 +9,7 @@
   border-radius: 2px;
   text-align: center;
 }
+
 .form-scope {
   position: absolute;
   left: 0;
@@ -17,6 +18,73 @@
   box-shadow: #00262C 0 2px 0 0;
   width: 400px;
   height: 300px;
+}
+
+.submit-form {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+}
+
+.save-form {
+  height: 40px;
+  width: 100px;
+  background-color:#4ACB5D;
+  color: #FFFFFF;
+  text-align: -webkit-center;
+  position: relative;
+  border-radius: 4px;
+  bottom: 6px;
+  left: 30px;
+}
+
+.cancel-form {
+  height: 40px;
+  width: 100px;
+  background-color: #C03724;
+  color: #FFFFFF;
+  text-align: -webkit-center;
+  position: relative;
+  border-radius: 4px;
+  bottom: 6px;
+  left: 46px;
+}
+form-draw input {
+  border: 5px solid white;
+  -webkit-box-shadow:
+    inset 0 0 8px  rgba(0,0,0,0.1),
+    0 0 16px rgba(0,0,0,0.1);
+  -moz-box-shadow:
+    inset 0 0 8px  rgba(0,0,0,0.1),
+    0 0 16px rgba(0,0,0,0.1);
+  box-shadow:
+    inset 0 0 8px  rgba(0,0,0,0.1),
+    0 0 16px rgba(0,0,0,0.1);
+  padding: 4px;
+  background: rgba(255,255,255,0.5);
+  margin: 0 0 3px 0;
+}
+form-draw textarea{
+  border: 5px solid white;
+  -webkit-box-shadow:
+    inset 0 0 8px  rgba(0,0,0,0.1),
+    0 0 16px rgba(0,0,0,0.1);
+  -moz-box-shadow:
+    inset 0 0 8px  rgba(0,0,0,0.1),
+    0 0 16px rgba(0,0,0,0.1);
+  box-shadow:
+    inset 0 0 8px  rgba(0,0,0,0.1),
+    0 0 16px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.5);
+}
+.text-save{
+  position: relative;
+  top: 8px;
+}
+
+.text-cancel{
+  position: relative;
+  top: 8px;
 }
 
 md-select-menu md-content {

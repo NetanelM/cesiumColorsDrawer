@@ -25,8 +25,13 @@ class MapCesiumController {
     Cesium.BingMapsApi.defaultKey = 'AroazdWsTmTcIx4ZE3SIicDXX00yEp9vuRZyn6pagjyjgS-VdRBfBNAVkvrucbqr';
     this.viewer = new Cesium.Viewer('cesiumContainer');
     this.config = {
-      viewer: this.viewer
+      viewer: this.viewer,
+      submit :this.onSubmit
     };
+  }
+
+  onSubmit(obj){
+
   }
 }
 

@@ -1,25 +1,38 @@
 <div class="open-form" ng-if="formDrawCtrl.visible" ng-click="formDrawCtrl.openForm()">form</div>
 <div class="form-scope" ng-if="!formDrawCtrl.visible">
-  <md-input-container class="">
-    <md-select ng-model="formDrawCtrl.shapeName">
-      <md-option ng-value="shape.name" ng-repeat="shape in formDrawCtrl.optionsShape">
-        <div ng-click="formDrawCtrl.setShape(shape)">{{shape.name}}</div>
-      </md-option>
-    </md-select>
-  </md-input-container>
-
-<div ng-if="formDrawCtrl.shapeName !==''">
-  <label>Coordinates:</label>
-<button class="set-coordinates" ng-click="formDrawCtrl.setCoordinates()"></button>
-  <input class="coordinates" ng-model="formDrawCtrl.coordinates" type="text">
-</div>
 
   <div>
+    <label>Shape :</label>
+    <md-input-container class="">
+      <md-select ng-model="formDrawCtrl.shapeName">
+        <md-option ng-value="shape.name" ng-repeat="shape in formDrawCtrl.optionsShape">
+          <div ng-click="formDrawCtrl.setShape(shape)">{{shape.name}}</div>
+        </md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+
+
+  <div ng-if="formDrawCtrl.shapeName !==''">
+    <label>Coordinates:</label>
+    <input class="coordinates" value="formDrawCtrl.coordinatesValue" ng-keypress="formDrawCtrl.setCoordinates($event)" ng-model="formDrawCtrl.coordinates" type="text">
+  </div>
+
+  <div>
+    <label class="name-shape">Name :</label>
+    <input ng-model="formDrawCtrl.name" class="text-name-shape" type="text">
+  </div>
+
+  <div>
+    <label class="description-shape" >Description :</label>
+    <textarea ng-model="formDrawCtrl.description" class="textarea-description-shape" ></textarea>
+  </div>
+  <div ng-if="formDrawCtrl.shapeName ==='Icon'">
     <label>Icon:</label>
     <icon-picker config="formDrawCtrl.iconConfig"></icon-picker>
   </div>
 
-  <div>
+  <div ng-if="formDrawCtrl.shapeName !=='Icon'">
     <label>Color:</label>
     <div md-color-picker ng-model="formDrawCtrl.selectColor"
          type="1"
@@ -27,8 +40,26 @@
          md-color-material-palette="false"
          md-color-alpha-channel="false"
          md-color-default-tab="1">
+
     </div>
 
   </div>
 
+  <div ng-if="formDrawCtrl.shapeName ==='Polygon'">
+    <label>Color fill :</label>
+    <div md-color-picker ng-model="formDrawCtrl.selectColorFill"
+         type="1"
+         md-color-sliders="false"
+         md-color-material-palette="false"
+         md-color-alpha-channel="false"
+         md-color-default-tab="1">
+
+    </div>
+
+  </div>
+
+  <div class="submit-form">
+    <div class="save-form" ng-click="formDrawCtrl.save()"><span class="text-save">Save</span></div>
+    <div class="cancel-form" ng-click="formDrawCtrl.cancel()"><span class="text-cancel">Cancel</span></div>
+  </div>
 </div>
