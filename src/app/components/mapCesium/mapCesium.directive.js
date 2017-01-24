@@ -6,7 +6,7 @@ export function MapCesiumDirective() {
 
   let directive = {
     restrict: 'E',
-    template: '<form-draw config="mapCtrl.config"></form-draw><div id="cesiumContainer"></div>',
+    template: '<div ng-click="mapCtrl.openForm()">openForm</div><div id="cesiumContainer"></div>',
     controller: MapCesiumController,
     controllerAs: 'mapCtrl'
   };
@@ -16,9 +16,15 @@ export function MapCesiumDirective() {
 }
 
 class MapCesiumController {
-  constructor() {
+  constructor(settingsService) {
     'ngInject';
+    this.settingsService =settingsService;
     this.initMapCesium();
+
+  }
+
+  openForm(){
+    this.settingsService.openFormDraw(this.viewer);
   }
 
   initMapCesium() {
@@ -26,11 +32,11 @@ class MapCesiumController {
     this.viewer = new Cesium.Viewer('cesiumContainer');
     this.config = {
       viewer: this.viewer,
-      submit :this.onSubmit
+      submit: this.onSubmit
     };
   }
 
-  onSubmit(obj){
+  onSubmit(obj) {
 
   }
 }

@@ -1,10 +1,12 @@
 .open-form {
   position: absolute;
   z-index: 1;
+  top:0;
   background-color: #ffffff;
   color: #181818;
   height: 30px;
   width: 50px;
+  right: 0;
   box-shadow: #181818 0 0 3px 0;
   border-radius: 2px;
   text-align: center;
@@ -12,7 +14,8 @@
 
 .form-scope {
   position: absolute;
-  left: 0;
+  top:0;
+  right: 0;
   z-index: 1;
   background-color: #FFFFFF;
   box-shadow: #00262C 0 2px 0 0;

@@ -24,7 +24,8 @@ class FormDrawController {
     this.selectColorFill = '#303336';
     this.icon = '/assets/iconsSymbol/airplane.svg';
     this.iconConfig = {
-      viewer: this.config.viewer
+      viewer: this.config.viewer,
+      icon:this.icon
     };
     this.coordinates = '';
     // TODO : watch to entity position
@@ -33,6 +34,7 @@ class FormDrawController {
     this.shapeName = '';
     this.initOptionsShape();
     this.initWatch();
+    this.initEntities();
   }
 
   initWatch() {
@@ -95,14 +97,10 @@ class FormDrawController {
     this.entity.billboard.image = icon.split('../').join('');
   }
 
-  openForm() {
-    this.entity = this.config.viewer.entities.getOrCreateEntity('drawingEntity');
-    this.visible = false;
-    this.initEntities()
-  }
-
   initEntities() {
     let that = this;
+    this.entity = this.config.viewer.entities.getOrCreateEntity('drawingEntity');
+    this.visible = false;
     this.entity.polygon = new Cesium.PolygonGraphics({});
     this.entity.polygon.hierarchy = null;
     this.entity.polyline = new Cesium.PolylineGraphics({});
@@ -192,6 +190,7 @@ class FormDrawController {
 
   cancel() {
     this.visible = true;
+    this.config.viewer.entities.removeById('drawingEntity');
   }
 
   save() {
@@ -206,6 +205,7 @@ class FormDrawController {
 
     this.config.onSubmit(object);
     this.visible = true;
+    this.config.viewer.entities.removeById('drawingEntity');
   }
 
 }

@@ -28,9 +28,9 @@ class IconPickerController {
     this.ICON_PICKER_WIDTH = 300;
     this.iconsPath = 'assets/images/icons/';
     this.entity = this.config.viewer.entities.getOrCreateEntity('drawingEntity');
-    this.icon = '/assets/iconsSymbol/airplane.svg';
+    this.icon = this.config.icon;
     this.metaData = metaData;
-    this.visible = false
+    this.visible = false;
   }
 
 
