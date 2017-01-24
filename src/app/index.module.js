@@ -3,6 +3,7 @@ import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { EventsHandlerService } from '../app/services/eventsHandler/eventsHandler.service';
 import { MetaDataService } from '../app/services/metaData/metaData.service';
+import { SettingsService } from '../app/services/settings/settings.service.js';
 import { AppDirective } from '../app/components/app/app.directive';
 import { FormDrawDirective } from '../app/components/formDraw/formDraw.directive';
 import { IconPickerDirective } from '../app/components/iconPicker/iconPicker.directive';
@@ -13,6 +14,7 @@ angular.module('colorPicker', ['ngAnimate', 'mdColorPicker', 'ngAria', 'ui.route
   .config(routerConfig)
   .run(runBlock)
   .service('metaData', MetaDataService)
+  .service('settingsService',SettingsService)
   .service('eventsHandler', EventsHandlerService)
   .directive('app', AppDirective)
   .directive('mapCesium', MapCesiumDirective)
