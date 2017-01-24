@@ -1,5 +1,3 @@
-/* global malarkey:false, moment:false */
-
 import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
@@ -10,9 +8,7 @@ import { FormDrawDirective } from '../app/components/formDraw/formDraw.directive
 import { IconPickerDirective } from '../app/components/iconPicker/iconPicker.directive';
 import { MapCesiumDirective } from '../app/components/mapCesium/mapCesium.directive';
 
-angular.module('colorPicker', ['ngAnimate', 'ngCookies', 'mdColorPicker', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ngMaterial', 'toastr'])
-  .constant('malarkey', malarkey)
-  .constant('moment', moment)
+angular.module('colorPicker', ['ngAnimate', 'mdColorPicker', 'ngAria', 'ui.router', 'ngMaterial', 'toastr'])
   .config(config)
   .config(routerConfig)
   .run(runBlock)
